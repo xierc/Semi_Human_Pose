@@ -1,0 +1,85 @@
+GPUS: '1'
+DATA_DIR: '' 
+OUTPUT_DIR: 'output'
+LOG_DIR: 'log'
+
+UNSUP_TRANSFORM: True
+MASK_JOINT_NUM: 5
+
+WORKERS: 12        
+PRINT_FREQ: 100
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  TRAIN_DATASET: mix_coco_coco
+  TEST_DATASET: coco
+  ROOT: 'data/'
+  TRAIN_SET: train
+  TEST_SET: validation
+  FLIP: true
+  ROT_FACTOR: 30
+  SCALE_FACTOR: 0.25
+  TRAIN_LEN: 1000
+  
+MODEL:
+  NAME: pose_dual
+  PRETRAINED: models/pytorch/imagenet/resnet18_5c_gluon_posedual.pth
+  IMAGE_SIZE:
+  - 192
+  - 256
+  NUM_JOINTS: 24
+  EXTRA:
+    TARGET_TYPE: gaussian
+    SIGMA: 2
+    HEATMAP_SIZE:
+    - 48
+    - 64
+    FINAL_CONV_KERNEL: 1
+    DECONV_WITH_BIAS: false
+    NUM_DECONV_LAYERS: 3
+    NUM_DECONV_FILTERS:
+    - 256
+    - 256
+    - 256
+    NUM_DECONV_KERNELS:
+    - 4
+    - 4
+    - 4
+    NUM_LAYERS: 18
+LOSS:
+  USE_TARGET_WEIGHT: true
+TRAIN:
+  BATCH_SIZE: 32
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 70
+  RESUME: false
+  OPTIMIZER: adam
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP:
+  - 50
+  - 60
+  WD: 0.0001
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  MOMENTUM: 0.9
+  NESTEROV: false
+TEST:
+  MODEL_FILE: 'models/pytorch/pose_dual/COCO_subset/COCO1K_PoseDual_JointCut5.pth.tar'
+  COCO_BBOX_FILE: 'data/coco/person_detection_results/COCO_val2017_detections_AP_H_56_person.json'
+  BBOX_THRE: 1.0
+  FLIP_TEST: false
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  USE_GT_BBOX: true
+DEBUG:
+  DEBUG: false
+  SAVE_BATCH_IMAGES_GT: true
+  SAVE_BATCH_IMAGES_PRED: true
+  SAVE_HEATMAPS_GT: true
+  SAVE_HEATMAPS_PRED: true
