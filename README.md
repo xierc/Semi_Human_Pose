@@ -2,7 +2,9 @@
 
 
 ## Introduction
-This is an official pytorch implementation of [*An Empirical Study of the Collapsing Problem in Semi-Supervised 2D Human Pose Estimation*](https://arxiv.org/abs/2011.12498). [ICCV 2021] [PDF](https://arxiv.org/abs/2011.12498)
+This is an official pytorch implementation of [*An Empirical Study of the Collapsing Problem in Semi-Supervised 2D Human Pose Estimation*](https://arxiv.org/abs/2011.12498). [ICCV 2021]
+
+ [PDF](https://arxiv.org/abs/2011.12498) | [ICCV Video](https://www.youtube.com/watch?v=KWPZI0MLKq0) | [Slide](https://github.com/xierc/xierc.github.io/blob/master/ICCV_semipose/iccv21-semipose-slides.pdf) | [Poster](https://github.com/xierc/xierc.github.io/blob/master/ICCV_semipose/iccv21-semipose-poster.pdf) 
 
 <img src="assets/posedual.png" />   
 
@@ -41,6 +43,9 @@ Results on COCO Val2017
 | PoseDual | HRNetW48   | **79.2 (↑2.0)**  | 94.6 | 81.7
 
 We use COCO TRAIN and WILD as labeled and unlabeled datasets, respectively
+
+### 3. Visualization on COCO Val
+<img src="assets/vis.png" />   
 
 ## Pretrained Models 
 Download Links
@@ -188,11 +193,13 @@ python pose_estimation/valid.py \
 ## Citation
 If you use our code or models in your research, please cite with:
 ```
-@inproceedings{semipose,
-  title={An Empirical Study of the Collapsing Problem in Semi-Supervised 2D Human Pose Estimation},
-  author={Xie, Rongchang and Wang, Chunyu and Zeng, Wenjun and Wang, Yizhou},
-  booktitle={ICCV},
-  year={2021}
+@InProceedings{Xie_2021_ICCV,
+    author    = {Xie, Rongchang and Wang, Chunyu and Zeng, Wenjun and Wang, Yizhou},
+    title     = {An Empirical Study of the Collapsing Problem in Semi-Supervised 2D Human Pose Estimation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {11240-11249}
 }
 ```
 ## Acknowledgement
