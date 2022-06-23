@@ -1,5 +1,5 @@
 EasyDict==1.7
-opencv-python==3.4.2.17
+opencv-python
 Cython
 scipy
 pandas
@@ -7,6 +7,6 @@ pyyaml
 json_tricks 
 scikit-image
 tensorboardX>=1.2
-numpy==1.17.2
+numpy
 Pillow==6.1
 pycocotools
