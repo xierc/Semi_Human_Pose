@@ -226,7 +226,7 @@ def _update_dict(k, v):
 def update_config(config_file):
     exp_config = None
     with open(config_file) as f:
-        exp_config = edict(yaml.load(f))
+        exp_config = edict(yaml.load(f, Loader=yaml.FullLoader))
         for k, v in exp_config.items():
             if k in config:
                 if isinstance(v, dict):
